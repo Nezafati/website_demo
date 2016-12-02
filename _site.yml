@@ -1,0 +1,15 @@
+name: "my-website"
+navbar:
+  title: "Demo Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Math"
+      href: math.html
+    - text: "Stats"
+      href: stats.html
+    - text: "Contact"
+      href: contact.html
+

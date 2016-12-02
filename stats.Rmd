@@ -1,0 +1,66 @@
+---
+title: "Stats"
+---
+
+##Standard Normal
+
+$$\phi (x) = \frac{e^{-\frac{1}{2}x^2}}{\sqrt{2\pi}}$$
+
+##R code
+
+We can also run **R** code directly in **Rstudio** and incorporate our results into our web page. For example, let's get a sample of ten observations from the distribution above. We can get a sample using the `rnorm()` function in **R**.
+
+```{r}
+x <- rnorm(10)
+x
+# let's see the histogram
+hist(x)
+mean(x)
+```
+
+Notice that it is hard to see that the sample comes from a standard normal distribution. Let's try a larger sample.
+
+```{r, cache=TRUE}
+x <- rnorm(100000)
+hist(x)
+mean(x)
+```
+
+...that's more like it.
+
+###Data Analysis
+
+Since we are developing our website in **Rstudio** we can also carryout our data analysis right here. Let's examine the `mtcars` dataset that is comes with **R**. first let's look at the structure of the dataset. [**mtcars documentation**](http://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html)
+
+```{r}
+data(mtcars)
+str(mtcars)
+```
+
+From the documentation, we can see that `hp` is for horsepower and `mpg` is for miles per gallon. Let's plot these two.
+
+```{r}
+plot(mpg~hp, data = mtcars)
+```
+
+It looks as though milage decreases as horsepower increase, which is expected.
+
+```{r}
+lm_mpg_hp <- lm(mpg~hp, data = mtcars)
+summary(lm_mpg_hp)
+```
+
+Let's see how the plot looks with a regression line.
+
+```{r}
+plot(mpg~hp, data = mtcars)
+abline(lm_mpg_hp)
+```
+
+What are the line's coefficients?
+
+```{r}
+knitr::kable(as.data.frame(lm_mpg_hp$coefficients))
+```
+
+Notice that I can output tables in **R** and convert them into html tables using `knitr::kable()`.

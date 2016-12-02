@@ -1,0 +1,8 @@
+---
+title: "Math"
+---
+Rmarkdown makes it easy to add math to a page.
+
+##Euler's Identity
+
+$$e^{i\pi}+1=0$$
